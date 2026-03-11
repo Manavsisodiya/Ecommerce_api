@@ -1,9 +1,16 @@
 package com.manav.e_commerce_api.repository;
 
-import com.manav.e_commerce_api.entity.Product;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.manav.e_commerce_api.entity.Product;
+
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
+    
+    List<Product> findByNameContainingIgnoreCase(String name);
+
+    List<Product> findByCategoryId(Long categoryId);
 }
